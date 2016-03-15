@@ -17,15 +17,23 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Use Devise for user authentication
+gem 'devise'
+# Use Pundit for user authorization
+gem 'pundit'
+# User figaro for credential storage
+gem 'figaro'
+# User active model serializers to serialize API output
+gem 'active_model_serializers'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'spring-commands-rspec'
+  gem 'vcr'
+  gem 'faker'
 end
 
 group :development do
@@ -36,3 +44,6 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+	gem 'webmock'
+end
