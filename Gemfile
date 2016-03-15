@@ -1,3 +1,4 @@
+ruby '2.2.1'
 source 'https://rubygems.org'
 
 
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'vcr'
   gem 'faker'
+  gem 'shoulda'
 end
 
 group :development do
