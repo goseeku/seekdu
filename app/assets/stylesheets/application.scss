@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+
+
+$red: #e52d27;
+$grey: #272727;
+$font-stack: 'Open Sans', sans-serif;
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 10px;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: #fff;
+	font-family: $font-stack;
+	min-height: 100%;
+	color: black;
+}
+
+.red-text {
+	color: $red;
+	font-size: inherit;
+}
+
+.btn {
+	
+}
+
+.btn-default {
+
+}

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160315183120) do
     t.string   "phone_number"
     t.string   "avatar_url"
     t.integer  "role"
+    t.string   "auth_token"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

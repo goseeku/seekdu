@@ -22,6 +22,7 @@ gem 'figaro'
 # User active model serializers to serialize API output
 gem 'active_model_serializers'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 
 group :production do
 	gem 'pg'

@@ -6,6 +6,8 @@
 			});
 		};
 
+		this.logout = Auth.logout;
+
 		this.register = function() {
 			Auth.register($scope.user).then(function() {
 				$state.go('dash');

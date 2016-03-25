@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone_number
       t.string :avatar_url
       t.integer :role
+      t.string :auth_token
 
       ## Recoverable
       t.string   :reset_password_token

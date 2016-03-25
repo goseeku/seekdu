@@ -2,7 +2,7 @@
 	function config($stateProvider, $locationProvider, $urlRouterProvider) {
 		$locationProvider
 			.html5Mode({
-				enabled: true,
+				enabled: false,
 				requireBase: false
 			})
 
@@ -11,17 +11,27 @@
 				url: '/',
 				controller: 'AuthCtrl as auth',
 				templateUrl: 'auth/_login.html',
-				// onEnter: ['$state', 'Auth', function($state, Auth) {
-				// 	Auth.currentUser().then(function() {
-				// 		$state.go('dash');
-				// 	})
-				// }]
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+					Auth.currentUser().then(function() {
+						$state.go('dash');
+					})
+				}]
 			})
-			// .state('dash', {
-			// 	url: '/dashboard',
-			// 	controller: 'DashCtrl as dash',
-			// 	templateUrl: 'dash/_dash.html'
-			// })
+			.state('register', {
+				url: '/register',
+				controller: 'AuthCtrl as auth',
+				templateUrl: 'auth/_register.html',
+				onEnter: ['$state', 'Auth', function($state, Auth) {
+					Auth.currentUser().then(function() {
+						$state.go('dash');
+					})
+				}]
+			})
+			.state('dash', {
+				url: '/dashboard',
+				controller: 'DashCtrl as dash',
+				templateUrl: 'dash/_dash.html'
+			})
 
 		$urlRouterProvider.otherwise('/');
 	}
