@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Seekdu</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body ng-app="seekdu">
+	<head lang="en">
+		<meta charset="UTF-8">
+	  <title>Seekdu</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <%= stylesheet_link_tag    'application', media: 'all' %>
+	  <%= javascript_include_tag 'application' %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body ng-app="seekdu">
 
-	<ui-view></ui-view>
+		<ui-view></ui-view>
 
-</body>
+	</body>
 </html>

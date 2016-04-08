@@ -2,7 +2,7 @@
 	function config($stateProvider, $locationProvider, $urlRouterProvider) {
 		$locationProvider
 			.html5Mode({
-				enabled: false,
+				enabled: true,
 				requireBase: false
 			})
 
@@ -14,7 +14,7 @@
 				onEnter: ['$state', 'Auth', function($state, Auth) {
 					Auth.currentUser().then(function() {
 						$state.go('dash');
-					})
+					});
 				}]
 			})
 			.state('register', {
@@ -24,7 +24,17 @@
 				onEnter: ['$state', 'Auth', function($state, Auth) {
 					Auth.currentUser().then(function() {
 						$state.go('dash');
-					})
+					});
+				}]
+			})
+			.state('pwreset', {
+				url: '/pwreset',
+				controller: 'AuthCtrl as auth',
+				templateUrl: 'auth/_pwreset.html',
+				onEnter: ['$state', 'Auth', function($state, Auth, creds) {
+					Auth.sendResetPasswordInstructions(creds).then(function() {
+						$state.go('login');
+					});
 				}]
 			})
 			.state('dash', {

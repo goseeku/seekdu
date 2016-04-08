@@ -10,37 +10,81 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require normalize-css
  *= require_tree .
  *= require_self
  */
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
-
-
-$red: #e52d27;
-$grey: #272727;
-$font-stack: 'Open Sans', sans-serif;
+@import 'variables';
 
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	font-size: 10px;
 }
 
 html {
 	height: 100%;
-	width: 100%;
+	font-size: 100%;
 }
 
 body {
 	background-color: #fff;
-	font-family: $font-stack;
+	font-family: $font-family;
 	min-height: 100%;
 	color: black;
 }
 
+.container {
+	margin: 0 auto;
+	max-width: 64rem;
+}
+
+.narrow {
+	max-width: 56rem;
+}
+
+/* Medium and small screens (640px) */
+@media (min-width: 40rem) {
+	html {
+		font-size: 112%;
+	}
+	
+	.column {
+		/*float: left;*/
+		display: inline-block;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+	
+	.column.full { width: 100%; }
+	.column.two-thirds { width: 66.7%; }
+	.column.half { width: 50%; }
+	.column.third { width: 33.3%; }
+	.column.fourth { width: 25%; }
+	.column.flow-opposite { float: right; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) {
+	html {
+		font-size: 120%;
+	}
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
 .red-text {
-	color: $red;
+	color: $primary-color;
 	font-size: inherit;
 }
 
@@ -48,6 +92,13 @@ body {
 	
 }
 
-.btn-default {
+.btn-primary {
+	background-color: $primary-color;
+	border: 1px solid $primary-color;;
+	text-transform: uppercase;
+	color: #fff;
+}
 
+.btn-primary:hover {
+	opacity: 0.7;
 }
