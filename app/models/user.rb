@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   before_save { self.role ||= :stu }
 
+  has_many :projects
+
   # before_create :generate_auth_token
 
   validates :username, 
