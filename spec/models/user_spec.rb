@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
 	let(:user) { create(:user) }
 
 	it { should have_many(:projects) }
-	# it { should have_many(:groups) }
-	# it { should have_many(:groupings) }
+	it { should have_many(:groupings) }
+	it { should have_many(:groups).through(:groupings) }
 
 	# shoulda tests for username
 	it { should validate_presence_of(:username) }

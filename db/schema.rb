@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505223014) do
+ActiveRecord::Schema.define(version: 20160505231033) do
+
+  create_table "groupings", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "groupable_id"
+    t.string   "groupable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "groupings", ["group_id"], name: "index_groupings_on_group_id"
+  add_index "groupings", ["groupable_type", "groupable_id"], name: "index_groupings_on_groupable_type_and_groupable_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
