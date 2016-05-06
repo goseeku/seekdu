@@ -1,0 +1,97 @@
+@import 'variables';
+
+.left-nav-panel {
+	width: 15%;
+	height: 100%;
+	position: absolute;
+	left: 00px;
+	top: 0;
+	border-right: 1px solid black;
+	overflow: scroll;
+
+	.container {
+		width: 100%;
+
+		.ionicon {
+			font-size: 2rem;
+		}
+
+		.hamburger {
+			position: relative;
+			left: 20px;
+			cursor: pointer;
+			display: inline-block;
+		}
+
+		.user-info {
+			width: 80%;
+			margin: 0 auto;
+			padding-top: 20%;
+
+			.prof-pic {
+				/*border-radius: 50px;*/
+
+				img {
+					display: block;
+					width: 60px;
+					height: 60px;
+					margin: 0 auto;
+				}
+
+			}
+
+			.name, .school {
+				font-size: 0.75rem;
+				text-align: center;
+				
+				p {
+					line-height: .5rem;
+				}
+			}
+
+			.school {
+				font-size: 0.6rem;
+			}
+		}
+
+		.project-list {
+			padding-top: 20%;
+
+			.project {
+				font-size: 0.65rem;
+				border-top: 2px solid black;
+				padding: 10px 10px;
+
+				.project-name {
+					font-weight: 400;
+					margin: 0;
+					padding: 0;
+				}
+			}
+
+			.task {
+				border-top: 2px solid black;
+				padding-left: 20px;
+				font-size: 0.6rem;
+			}
+		}
+
+		.new-project-button {
+			border-top: 2px solid black;
+			padding-top: 10%;
+			width: 100%;
+			margin: 0 auto;
+
+			.ion-ios-plus-outline {
+				position: relative;
+				cursor: pointer;
+				left: 37%;
+				color: $primary-color;
+			}
+
+			.ion-ios-plus-outline:hover {
+				opacity: 0.6;
+			}
+		}
+	}
+}
