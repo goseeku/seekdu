@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   before_save { self.role ||= :stu }
 
   has_many :projects
+  has_many :groupings
+  has_many :groups, through: :groupings
 
   # before_create :generate_auth_token
 
@@ -20,10 +22,15 @@ class User < ActiveRecord::Base
   validates :last_name,
   					length: { minimum: 2, maximum: 20 }, 
   					presence: true
-  validates :grad_year, length: { is: 4 }
-  validates :school, length: { minimum: 3, maximum: 30 }
+  validates :grad_year, 
+            length: { is: 4 },
+            allow_blank: true
+  validates :school, 
+            length: { minimum: 3, maximum: 30 },
+            allow_blank: true
   validates :phone_number, 
-  					length: {is: 10 }
+  					length: {is: 10 },
+            allow_blank: true
 
   enum role: [:stu, :edu, :par, :admin]
 

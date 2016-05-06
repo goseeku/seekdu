@@ -5,7 +5,7 @@ RSpec.describe Group, type: :model do
 
   it { should have_many(:groupings) }
   it { should have_many(:users).through(:groupings) }
-  it { should have_many(:projects).through(:groupings) }
+  it { should have_many(:projects) }
 
 	# shoulda tests for name
   it { should validate_presence_of(:name) }

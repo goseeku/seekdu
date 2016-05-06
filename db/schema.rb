@@ -15,14 +15,13 @@ ActiveRecord::Schema.define(version: 20160505231033) do
 
   create_table "groupings", force: :cascade do |t|
     t.integer  "group_id"
-    t.integer  "groupable_id"
-    t.string   "groupable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "groupings", ["group_id"], name: "index_groupings_on_group_id"
-  add_index "groupings", ["groupable_type", "groupable_id"], name: "index_groupings_on_groupable_type_and_groupable_id"
+  add_index "groupings", ["user_id"], name: "index_groupings_on_user_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -32,11 +31,13 @@ ActiveRecord::Schema.define(version: 20160505231033) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
+    t.integer  "group_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "projects", ["group_id"], name: "index_projects_on_group_id"
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "subtasks", force: :cascade do |t|
