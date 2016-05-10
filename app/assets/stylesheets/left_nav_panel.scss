@@ -12,15 +12,20 @@
 	.container {
 		width: 100%;
 
-		.ionicon {
-			font-size: 2rem;
-		}
-
 		.hamburger {
 			position: relative;
 			left: 20px;
 			cursor: pointer;
 			display: inline-block;
+
+			.ion-navicon {
+				color: $primary-color;
+				font-size: 2rem;
+			}
+
+			.ion-navicon:hover {
+				opacity: 0.6;
+			}
 		}
 
 		.user-info {
@@ -29,9 +34,10 @@
 			padding-top: 20%;
 
 			.prof-pic {
-				/*border-radius: 50px;*/
 
 				img {
+					border-radius: 30px;
+					border: 1px solid black;
 					display: block;
 					width: 60px;
 					height: 60px;
@@ -77,15 +83,11 @@
 		}
 
 		.new-project-button {
-			border-top: 2px solid black;
-			padding-top: 10%;
 			width: 100%;
 			margin: 0 auto;
+			cursor: pointer;
 
 			.ion-ios-plus-outline {
-				position: relative;
-				cursor: pointer;
-				left: 37%;
 				color: $primary-color;
 			}
 
