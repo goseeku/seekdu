@@ -48,7 +48,7 @@ RSpec.describe Api::UsersController, type: :controller do
 			end
 
 			it "returns the current user" do
-				expect(ParentSerializer.new(par_user).to_json).to eq response.body
+				expect(response.body).to eq ParentSerializer.new(par_user).to_json
 			end
 		end
 

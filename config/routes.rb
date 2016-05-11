@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get '/*path' => 'application#angular'
 
   root to: 'application#angular'
 
@@ -37,4 +36,6 @@ Rails.application.routes.draw do
 			end
 		end
   end
+  
+  get '/*path' => 'application#angular'
 end
