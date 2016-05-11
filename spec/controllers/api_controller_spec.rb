@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::ApiController, type: :controller do
+RSpec.describe ApiController, type: :controller do
 	let(:my_user) { create(:user) }
 
 	context "unauthorized user" do

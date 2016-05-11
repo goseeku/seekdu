@@ -12,13 +12,7 @@ class Api::ProjectsController < ApiController
 	end
 
 	def show
-		if params[:user_id]
-			user = User.find(params[:user_id])
-			project = user.projects.find(params[:id])
-		elsif params[:group_id]
-			group = Group.find(params[:group_id])
-			project = group.projects.find(params[:id])
-		end
+		project = get_project
 
 		render json: project
 	end
@@ -34,13 +28,7 @@ class Api::ProjectsController < ApiController
 	end
 
 	def update
-		if params[:user_id]
-			user = User.find(params[:user_id])
-			project = user.projects.find(params[:id])
-		elsif params[:group_id]
-			group = Group.find(params[:group_id])
-			project = group.projects.find(params[:id])
-		end
+		project = get_project
 
 		if project.update(project_params)
 			render json: project
@@ -50,13 +38,7 @@ class Api::ProjectsController < ApiController
 	end
 
 	def destroy
-		if params[:user_id]
-			user = User.find(params[:user_id])
-			project = user.projects.find(params[:id])
-		elsif params[:group_id]
-			group = Group.find(params[:group_id])
-			project = group.projects.find(params[:id])
-		end
+		project = get_project
 
 		if project.destroy
 			render json: { message: "Project deleted.", status: 200 }, status: 200
@@ -68,5 +50,16 @@ class Api::ProjectsController < ApiController
 	private
 	def project_params
 		params.require(:project).permit(:name)
+	end
+
+	def get_project
+		if params[:user_id]
+			user = User.find(params[:user_id])
+			project = user.projects.find(params[:id])
+		elsif params[:group_id]
+			group = Group.find(params[:group_id])
+			project = group.projects.find(params[:id])
+		end
+		return project
 	end
 end
