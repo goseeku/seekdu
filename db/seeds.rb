@@ -30,6 +30,23 @@ end
 
 projects = Project.all
 
+# Create groups
+2.times do
+	Group.create(name: Faker::Lorem.word)
+end
+
+groups = Group.all
+
+# Create groupings
+10.times do
+	Grouping.create(
+		user: users.sample,
+		group: groups.sample
+	)
+end
+
 puts "Seed finished!"
 puts "#{User.count} users created"
 puts "#{Project.count} projects created"
+puts "#{Group.count} groups created"
+puts "#{Grouping.count} groupings created"

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 		end
 
 
-		resources :groups, only: [:show, :create, :update, :destroy] do
+		resources :groups, only: [:index, :show, :create, :update, :destroy] do
 			resources :projects, only: [:index, :show, :create, :update, :destroy] do
 				resources :tasks, only: [:index, :show, :create, :update, :destroy] do
 					resources :subtasks, only: [:index, :show, :create, :update, :destroy]
