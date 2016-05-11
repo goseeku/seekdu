@@ -1,7 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::BaseController, type: :controller do
+RSpec.describe Api::ApiController, type: :controller do
 	let(:my_user) { create(:user) }
+
+	context "unauthorized user" do
+		describe "#authenticate_user" do
+			it "assigns nil to current_user" do
+				expect(assigns(:current_user)).to be_nil
+			end
+		end
+	end
 
 	context "authorized user" do
 		before do

@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   after_filter :set_csrf_cookie_for_ng
 
-  respond_to :json
-
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  respond_to :json
 
   def angular
   	render 'layouts/application'

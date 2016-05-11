@@ -65,9 +65,15 @@ RSpec.describe User, type: :model do
 		end
 	end
 
-	# describe "#generate_auth_token" do
-	# 	it "creates a token" do
-	# 		expect(user.auth_token).to_not be_nil
-	# 	end
-	# end
+	describe "#generate_auth_token" do
+		it "creates a token" do
+			expect(user.auth_token).to_not be_nil
+		end
+	end
+
+	describe "#full_name" do
+		it "returns the full name of the user" do
+			expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
+		end
+	end
 end
