@@ -4,9 +4,9 @@ class GroupSerializer < ActiveModel::Serializer
   def users
   	users = []
   	object.groupings.each do |grouping|
-  		users << grouping.user unless users.include?(grouping.user)
+  		users << grouping.user
   	end
-
+    users.uniq!
   	users.map! do |user|
   		{
   			id: user.id,

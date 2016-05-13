@@ -15,15 +15,29 @@ class Api::GroupsController < ApiController
 
 	def create
 		group = Group.new(group_params)
+		build_groupings(group)
 
 		if group.save
 			render json: group
 		else
-			unprocessable_entry(group)
+			unprocessable_entity(group)
 		end
 	end
 
 	def update
+		group = Group.find(params[:id])
+
+		group.groupings.each do |grouping|
+			grouping.destroy
+		end
+
+		build_groupings(group)
+
+		if group.update(group_params)
+			render json: group
+		else
+			unprocessable_entity(group)
+		end
 	end
 
 	def destroy
@@ -32,5 +46,12 @@ class Api::GroupsController < ApiController
 	private
 	def group_params
 		params.require(:group).permit(:name)
+	end
+
+	def build_groupings(group)
+		users_array = params[:group][:users].split(',').uniq
+		users_array.each do |a|
+			group.groupings.build(user_id: a)
+		end
 	end
 end

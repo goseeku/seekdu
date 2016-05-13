@@ -4,8 +4,8 @@ RSpec.describe Api::GroupsController, type: :controller do
 	let(:my_group) { create(:group) }
 	let(:my_user) { create(:user) }
 	let(:other_user) { create(:user) }
-	let(:my_grouping) { create(:grouping, group: my_group, user: my_user) }
-	let(:other_grouping) { create(:grouping, group: my_group, user: other_user) }
+	# let(:my_grouping) { create(:grouping, group: my_group, user: my_user) }
+	# let(:other_grouping) { create(:grouping, group: my_group, user: other_user) }
 
 	context "unauthorized user" do
 		describe "GET index" do
@@ -81,8 +81,8 @@ RSpec.describe Api::GroupsController, type: :controller do
 
 		describe "POST create" do
 			before { 
-				@new_group = build(:group, name: "New Group")
-				post :create, group: { name: @new_group.name }
+				@new_group = build(:group, name: "New Group", id: 1)
+				post :create, group: { name: @new_group.name, users: "#{my_user.id},#{other_user.id}" }
 			}
 
 			it 'returns http success' do
@@ -99,6 +99,24 @@ RSpec.describe Api::GroupsController, type: :controller do
 		end
 
 		describe "PUT update" do
+			before {
+				my_group.name = "New Group Name"
+				third_user = create(:user)
+				put :update, id: my_group.id, group: { name: my_group.name, users: "#{third_user.id}"}
+			}
+
+			it 'returns http success' do
+				expect(response).to have_http_status(:success)
+			end
+
+			it 'returns json content type' do
+				expect(response.content_type).to eq 'application/json'
+			end
+
+			it 'updates the group with the correct attributes' do
+				puts response.body
+				expect(response.body).to eq GroupSerializer.new(my_group).to_json
+			end
 		end
 
 		describe "DELETE destroy" do

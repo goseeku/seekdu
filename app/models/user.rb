@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   before_save { self.role ||= :stu }
 
-  has_many :projects
+  has_many :projects, dependent: :destroy
   has_many :groupings
   has_many :groups, through: :groupings
 
